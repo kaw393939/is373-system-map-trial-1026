@@ -4,7 +4,7 @@
 
 ## Target and inputs
 
-The selected attempt rebuilds [application commit4600202…][app] using its reviewed Dockerfile. No registry login/push, Docker socket mount, Traefik, public hostname, production SSH, updater or private state is used. The runner binds one restricted container to `127.0.0.1:18090`, then removes its own container/image.
+The selected attempt rebuilds [application commit4600202…][app] using its reviewed Dockerfile. No registry login/push, Docker socket mount, Traefik, public hostname, production SSH, updater or private state is used. The runner binds one restricted container to `127.0.0.1:18090`, then runs cleanup for its own container/image; the runner is disposable.
 
 The Mac's ordinary Docker setup was initially unavailable during instructor inspection. A later absolute-path check reached Docker server29.7.2. We retained the already-agreed runner target; this is not evidence that Docker remained stopped or that the Mac recreation was tested. Standard public GitHub Actions runner resources were used; no second paid VPS/domain was created.
 
@@ -17,7 +17,7 @@ The Mac's ordinary Docker setup was initially unavailable during instructor insp
 | 3. Runner, app checkout | Helper builds the actual Dockerfile with `COMMIT_SHA` and a new `BUILT_AT`. | Image built; imageID `sha256:f124e7633c117fef019bc564a8b1664eeae91b57888c8c17009f70a0fe5e1f97`. New source build, **not** the byte-identical tested production artifact: distro update repositories/build time can differ. |
 | 4. Runner loopback | Start unique container: UID/GID10001, read-only, all capabilities dropped, no-new-privileges, PID limit128, bounded temporary `/tmp`; bind18090→8000. Wait up to45s for health. | `/health`:200/statusok/production/full expected commit; new build time `2026-10-26T22:50:49Z`. |
 | 5. Runner loopback | POST6×7 should return200/result42; POST6÷0 should return400/`division_by_zero`. | Both comparisons passed. These are two joined HTTP/app checks; not the application's complete unit or browser suite. |
-| 6. Runner cleanup | Helper's `finally` removes only its unique container/image; GitHub disposes the runner. | Run completed successfully; cleanup commands executed. No live service was started/stopped. |
+| 6. Runner cleanup | Helper's `finally` removes only its unique container/image; GitHub disposes the runner. | Run completed successfully; cleanup commands executed. No live service was started/stopped; the entire runner was disposable. |
 
 **Actual evidence:** [run40415518240](https://github.com/kaw393939/is373-system-map-trial-1026/actions/runs/40415518240), [helper revision6aa0135](https://github.com/kaw393939/is373-system-map-trial-1026/blob/6aa0135f6c9968eb0b7301f0bf3893b94a751c42/scripts/recreate_app.py). To repeat this trial in a separately agreed disposable target, use the workflow's manual run. Read the helper before execution; do not run production lifecycle commands as a shortcut.
 
@@ -40,7 +40,7 @@ The Mac's ordinary Docker setup was initially unavailable during instructor insp
 
 Before claiming recovery, an authorized owner must privately back up/restore hosting site/configuration/certificate state, app override/`.env`/`.state`, WUD data, and the selected compatible release. A source checkout cannot reconstruct missing private state. Test restoration into an isolated target and verify release identity plus relevant routes; never restore over production or delete existing volumes.
 
-**Guide correction discovered in this trial:** “run Docker locally” was too vague for this environment. The recorded attempt now names the Ubuntu runner, pinned checkout, loopback port, checks and cleanup. Later Docker reachability is recorded rather than hidden.
+**Environment adjustment:** the initial Docker limitation led to an explicitly agreed Ubuntu runner target. The guide names its pinned checkout, loopback port, checks and cleanup instead of implying an unspecified local build. Later Docker reachability is recorded rather than hidden; this was an environment decision, not a learner-discovered wording defect.
 
 The rebuilt app verifies only its recorded identity and two API behaviors in that runner. It does not establish identical production bytes, the public proxy/network, certificate renewal, host restart, backup restoration, live automatic delivery or rollback. Learner observation/interpretation is recorded separately in [LEARNING.md](../LEARNING.md).
 
