@@ -2,7 +2,7 @@
 
 **AI student simulation, October 26, 2026.** Instructor-owned class system; not real student learning evidence.
 
-- **Status / next step:** Keep stage: documentation, isolated app recreation and LEARNING accuracy reviewed; PR requested. Linked GitHub PR records current integration status.
+- **Status / next step:** Keep stage: documentation, isolated app recreation and LEARNING accuracy reviewed. [PR #2](https://github.com/kaw393939/is373-system-map-trial-1026/pull/2) records current integration status; optional next cycle remains separate.
 - **Documentation:** [separate trial](https://github.com/kaw393939/is373-system-map-trial-1026), [issue #1](https://github.com/kaw393939/is373-system-map-trial-1026/issues/1), branch `docs/doc-001`.
 - **Application:** [is373_ci_cd at 4600202bad42da0c5ffb11d83ce8364671293d3d][app].
 - **Hosting:** [373_hosting at 9d828ad1cf3b72d3c6379e074474683eae0cdd8f][hosting].
@@ -86,9 +86,9 @@ flowchart LR
 
 ## Work record
 
-- **Documentation check:** `python3 scripts/check_docs.py` — baseline0 problems; hygiene only.
-- **Checker tests:** `python3 -m unittest discover -s tests -v` — baseline4 passed; checker tests, not server tests.
-- **PR / latest CI:** pending.
+- **Documentation check:** `python3 scripts/check_docs.py` — 0 publication problems; hygiene only.
+- **Checker tests:** `python3 -m unittest discover -s tests -v` — 4 passed; checker tests, not server tests.
+- **PR / CI:** [PR #2](https://github.com/kaw393939/is373-system-map-trial-1026/pull/2). [Documentation run40416086930](https://github.com/kaw393939/is373-system-map-trial-1026/actions/runs/40416086930) checks implementation/docs head9b6968d before this link-only record update; [current PR checks](https://github.com/kaw393939/is373-system-map-trial-1026/pull/2/checks) show the latest head. The actual app recreation is run40415518240 above.
 - **LEARNING accuracy review:** explicit simulated-learner approval on October26 before first excerpt staging/commit/push; permission included documentation PR.
 - **Completion scope:** evidence-based documentation and isolated app source recreation; no full server restore claimed. PR records merge status.
 

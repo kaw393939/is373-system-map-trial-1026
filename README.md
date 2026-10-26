@@ -5,6 +5,7 @@
 - [System specification](SPEC.md): request path, components/state and CI/CD handoff, with source/runtime evidence kept distinct.
 - [Recreation guide](docs/recreate.md): an actual isolated app rebuild plus untested full-host steps and gaps.
 - [Learning record](LEARNING.md): short, accuracy-reviewed contributions and help; AI role-play, not real student learning evidence.
+- [Documentation PR #2](https://github.com/kaw393939/is373-system-map-trial-1026/pull/2).
 - [DOC-001 issue](https://github.com/kaw393939/is373-system-map-trial-1026/issues/1).
 - [Actual isolated recreation run](https://github.com/kaw393939/is373-system-map-trial-1026/actions/runs/40415518240).
 
