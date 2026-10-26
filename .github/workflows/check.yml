@@ -1,0 +1,21 @@
+name: Check documentation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Check the checker
+        run: python3 -m unittest discover -s tests -v
+      - name: Check publishable documents
+        run: python3 scripts/check_docs.py
