@@ -1,0 +1,27 @@
+name: Isolated app recreation
+
+on:
+  push:
+    paths:
+      - scripts/recreate_app.py
+      - .github/workflows/recreate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recreate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Read the pinned public application source
+        uses: actions/checkout@v5
+        with:
+          repository: kaw393939/is373_ci_cd
+          ref: 4600202bad42da0c5ffb11d83ce8364671293d3d
+          path: .private/recreation-source
+          persist-credentials: false
+      - name: Rebuild and check the isolated app; always clean up its container
+        run: python3 scripts/recreate_app.py .private/recreation-source
